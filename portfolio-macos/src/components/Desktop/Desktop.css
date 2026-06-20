@@ -1,0 +1,84 @@
+.window {
+  position: absolute;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  resize: both;
+  min-width: 400px;
+  min-height: 300px;
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+  border-bottom: 1px solid #ccc;
+  padding: 0 12px;
+  cursor: move;
+  user-select: none;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+  margin-right: 12px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.control:hover {
+  opacity: 0.8;
+}
+
+.control.close {
+  background: #ff5f57;
+}
+
+.control.minimize {
+  background: #febc2e;
+}
+
+.control.maximize {
+  background: #28c840;
+}
+
+.window-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  flex: 1;
+  text-align: center;
+  margin-right: 52px; /* Balance the controls */
+}
+
+.window-content {
+  height: calc(100% - 38px);
+  overflow: auto;
+}
+
+/* Window positioning states */
+.window.minimized {
+  display: none;
+}
+
+.window.active {
+  z-index: 100;
+}
+
+.desktop {
+  width: 100%;
+  height: calc(100vh - 30px);
+  margin-top: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}

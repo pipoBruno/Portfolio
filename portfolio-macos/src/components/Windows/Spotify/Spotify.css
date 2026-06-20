@@ -1,0 +1,132 @@
+.spotify-window {
+  width: 700px;
+  height: 500px;
+  background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-content {
+  display: flex;
+  height: calc(100% - 38px);
+}
+
+.spotify-sidebar {
+  width: 250px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.spotify-sidebar h3 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.playlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #fff;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.playlist-item.active {
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.song-title {
+  font-size: 13px;
+}
+
+.song-artist {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.song-duration {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.spotify-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.ascii-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ascii-canvas {
+  border: 2px solid #1DB954;
+  border-radius: 8px;
+  background: #000;
+}
+
+.now-playing {
+  text-align: center;
+  color: #fff;
+}
+
+.now-playing h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.now-playing p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.stop-btn {
+  background: #ff4444;
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.stop-btn:hover {
+  transform: scale(1.05);
+}
+
+.no-selection {
+  color: #fff;
+  text-align: center;
+  opacity: 0.8;
+}

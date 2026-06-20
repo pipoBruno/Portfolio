@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useMetricsStore } from '../../stores/windowStore';
 import { formatMetrics, getRandomVisitorCount } from '../../utils/helpers';
-import { WifiIcon, BatteryFullIcon, SearchIcon } from 'lucide-react';
 import './MenuBar.css';
 
 const MenuBar = () => {
@@ -58,7 +57,9 @@ const MenuBar = () => {
   return (
     <div className="menu-bar">
       <div className="menu-left">
-        <span className="menu-item apple"></span>
+        <span className="menu-item apple">
+          <img src="/icons/apple.png" alt="Apple" width={16} height={16} />
+        </span>
         <span className="menu-item bold">Portfolio</span>
         <span className="menu-item">File</span>
         <span className="menu-item">Edit</span>
@@ -74,13 +75,13 @@ const MenuBar = () => {
           <span className="metric-item">⏱ {metrics.sessionTime}</span>
         </div>
         <div className="status-icon">
-          <SearchIcon size={16} />
+          <img src="/icons/search.png" alt="Search" width={16} height={16} onError={(e) => e.target.style.display = 'none'} />
         </div>
         <div className="status-icon">
-          <WifiIcon size={16} />
+          <img src="/icons/wifi.png" alt="WiFi" width={16} height={16} />
         </div>
         <div className="status-icon">
-          <BatteryFullIcon size={16} />
+          <img src="/icons/battery.png" alt="Battery" width={16} height={16} />
         </div>
         <span className="time-display">{currentTime}</span>
       </div>

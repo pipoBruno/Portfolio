@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { FolderIcon, FileTextIcon, TerminalSquareIcon, MusicIcon, BriefcaseIcon } from 'lucide-react';
 import { useWindowStore } from '../../stores/windowStore';
 import Terminal from '../Windows/Terminal/Terminal';
 import Spotify from '../Windows/Spotify/Spotify';
@@ -7,10 +8,19 @@ import Projects from '../Windows/Projects/Projects';
 import Resume from '../Windows/Resume/Resume';
 import './Desktop.css';
 
+const desktopIcons = [
+  { id: 'finder', name: 'Finder', icon: FolderIcon },
+  { id: 'projects', name: 'Projects', icon: BriefcaseIcon },
+  { id: 'resume', name: 'Resume.pdf', icon: FileTextIcon },
+  { id: 'terminal', name: 'Terminal', icon: TerminalSquareIcon },
+  { id: 'spotify', name: 'Spotify', icon: MusicIcon },
+];
+
 const Desktop = () => {
   const openWindows = useWindowStore((state) => state.openWindows);
   const activeWindowId = useWindowStore((state) => state.activeWindowId);
   const setActiveWindow = useWindowStore((state) => state.setActiveWindow);
+  const openWindow = useWindowStore((state) => state.openWindow);
   
   const windowPositions = useRef({
     terminal: { x: 100, y: 100 },
@@ -19,6 +29,10 @@ const Desktop = () => {
     projects: { x: 250, y: 250 },
     resume: { x: 300, y: 300 }
   });
+
+  const handleIconClick = (id) => {
+    openWindow(id);
+  };
 
   const renderWindow = (windowId) => {
     const components = {
@@ -50,6 +64,21 @@ const Desktop = () => {
 
   return (
     <div className="desktop">
+      <div className="desktop-grid">
+        {desktopIcons.map((icon) => {
+          const IconComponent = icon.icon;
+          return (
+            <div
+              key={icon.id}
+              className="desktop-icon"
+              onDoubleClick={() => handleIconClick(icon.id)}
+            >
+              <IconComponent size={48} strokeWidth={1.5} />
+              <span>{icon.name}</span>
+            </div>
+          );
+        })}
+      </div>
       {openWindows.map(renderWindow)}
     </div>
   );

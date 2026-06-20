@@ -1,31 +1,37 @@
 import { useWindowStore } from '../../stores/windowStore';
+import { FolderIcon, TerminalSquareIcon, MusicIcon, BriefcaseIcon, FileTextIcon } from 'lucide-react';
 import './Dock.css';
+
+const apps = [
+  { id: 'finder', icon: FolderIcon, label: 'Finder' },
+  { id: 'terminal', icon: TerminalSquareIcon, label: 'Terminal' },
+  { id: 'spotify', icon: MusicIcon, label: 'Spotify' },
+  { id: 'projects', icon: BriefcaseIcon, label: 'Projects' },
+  { id: 'resume', icon: FileTextIcon, label: 'Resume' },
+];
 
 const Dock = () => {
   const openWindow = useWindowStore((state) => state.openWindow);
-  
-  const apps = [
-    { id: 'finder', icon: '😊', label: 'Finder' },
-    { id: 'terminal', icon: '💻', label: 'Terminal' },
-    { id: 'spotify', icon: '🎵', label: 'Spotify' },
-    { id: 'projects', icon: '📁', label: 'Projects' },
-    { id: 'resume', icon: '📄', label: 'Resume' },
-  ];
+  const openWindows = useWindowStore((state) => state.openWindows);
   
   return (
-    <div className="dock">
-      <div className="dock-content">
-        {apps.map((app) => (
-          <div 
-            key={app.id} 
-            className="dock-item"
-            onClick={() => openWindow(app.id)}
-            title={app.label}
-          >
-            <span className="dock-icon">{app.icon}</span>
-            <span className="dock-label">{app.label}</span>
-          </div>
-        ))}
+    <div className="dock-container">
+      <div className="dock">
+        {apps.map((app) => {
+          const IconComponent = app.icon;
+          const isActive = openWindows.includes(app.id);
+          
+          return (
+            <div 
+              key={app.id} 
+              className={`dock-item ${isActive ? 'active' : ''}`}
+              onClick={() => openWindow(app.id)}
+              data-title={app.label}
+            >
+              <IconComponent size={40} strokeWidth={1.5} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

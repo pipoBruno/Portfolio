@@ -2,19 +2,24 @@
   width: 700px;
   height: 500px;
   background: rgba(30, 30, 30, 0.95);
-  border-radius: 10px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  box-shadow: var(--macos-shadow);
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
 }
 
 .terminal-content {
-  height: calc(100% - 38px);
-  padding: 12px;
-  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-  font-size: 13px;
-  color: #0f0;
+  flex: 1;
+  padding: 16px;
+  font-family: 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #f5f5f7;
   overflow-y: auto;
-  background: #1a1a1a;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .terminal-line {
@@ -26,18 +31,20 @@
 .terminal-line pre {
   margin: 0;
   font-family: inherit;
-  color: #0f0;
+  font-size: inherit;
+  background: transparent;
+  padding: 0;
+  color: inherit;
 }
 
 .terminal-input-line {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 8px;
 }
 
 .prompt {
-  color: #0f0;
+  color: #28c840;
   font-weight: bold;
 }
 
@@ -46,30 +53,27 @@
   background: transparent;
   border: none;
   outline: none;
-  color: #0f0;
+  color: #f5f5f7;
   font-family: inherit;
   font-size: inherit;
-  caret-color: #0f0;
+  caret-color: #f5f5f7;
 }
 
-.terminal-input::placeholder {
-  color: rgba(0, 255, 0, 0.3);
-}
-
-/* Scrollbar styling */
+/* Scrollbar */
 .terminal-content::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .terminal-content::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .terminal-content::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
 }
 
 .terminal-content::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgba(255, 255, 255, 0.3);
 }

@@ -84,16 +84,16 @@ const Terminal = () => {
   };
 
   return (
-    <div className="window terminal-window" onClick={handleClick}>
+    <div className="terminal-window" onClick={handleClick}>
       <div className="window-header">
         <div className="window-controls">
-          <button className="control close" onClick={() => closeWindow('terminal')} />
-          <button className="control minimize" onClick={() => minimizeWindow('terminal')} />
-          <button className="control maximize" />
+          <button className="window-control close" onClick={() => closeWindow('terminal')} />
+          <button className="window-control minimize" onClick={() => minimizeWindow('terminal')} />
+          <button className="window-control maximize" />
         </div>
-        <span className="window-title">Terminal</span>
+        <span className="window-title">user — -zsh — 80x24</span>
       </div>
-      <div className="window-content terminal-content" ref={outputRef}>
+      <div className="terminal-content" ref={outputRef}>
         {history.map((line, index) => (
           <div key={index} className="terminal-line">
             <pre>{line}</pre>

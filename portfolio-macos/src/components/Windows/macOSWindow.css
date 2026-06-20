@@ -1,0 +1,134 @@
+/* Shared macOS Window Styles */
+.macos-window {
+  position: absolute;
+  background: var(--macos-window-bg);
+  backdrop-filter: var(--macos-blur);
+  -webkit-backdrop-filter: var(--macos-blur);
+  border-radius: 12px;
+  box-shadow: var(--macos-shadow);
+  border: 1px solid var(--macos-window-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  min-height: 300px;
+  resize: both;
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--macos-window-border);
+  user-select: none;
+  cursor: default;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+  margin-right: 12px;
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.15s ease;
+}
+
+.window-control:hover {
+  opacity: 0.8;
+}
+
+.window-control.close {
+  background: var(--macos-close);
+}
+
+.window-control.minimize {
+  background: var(--macos-minimize);
+}
+
+.window-control.maximize {
+  background: var(--macos-maximize);
+}
+
+.window-control.close::after,
+.window-control.minimize::after,
+.window-control.maximize::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.window-control.close:hover::after {
+  opacity: 1;
+}
+
+.window-control.close::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 1l8 8m0-8L1 9' stroke='%23000' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.window-title {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--macos-text);
+  letter-spacing: -0.01em;
+}
+
+.window-content {
+  flex: 1;
+  overflow: auto;
+  background: var(--macos-window-bg);
+}
+
+/* Sidebar Style */
+.window-sidebar {
+  width: 180px;
+  background: var(--macos-sidebar-bg);
+  border-right: 1px solid var(--macos-window-border);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--macos-text);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sidebar-item:hover {
+  background: var(--macos-row-hover);
+}
+
+.sidebar-item.active {
+  background: rgba(0, 122, 255, 0.15);
+}
+
+.sidebar-item svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
